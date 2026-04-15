@@ -482,15 +482,19 @@
   });
 
   /* ============================================
-     11. HERO PARALLAX (subtle, desktop only)
+     11. HERO PARALLAX (subtle, desktop only — DISABLED on mobile to prevent scroll jitter)
      ============================================ */
-  if (window.matchMedia('(min-width: 769px)').matches && heroImg) {
-    window.addEventListener('scroll', () => {
+  const isMobile = () => window.innerWidth < 769;
+
+  if (!isMobile() && heroImg) {
+    const parallaxHandler = () => {
+      if (isMobile()) return; // Guard: skip if resized to mobile
       const scrollY = window.scrollY;
       if (scrollY < window.innerHeight) {
-        heroImg.style.transform = `scale(1) translateY(${scrollY * 0.18}px)`;
+        heroImg.style.transform = `scale(1) translateY(${scrollY * 0.15}px)`;
       }
-    }, { passive: true });
+    };
+    window.addEventListener('scroll', parallaxHandler, { passive: true });
   }
 
   console.log('%c🚗 MS Garage — Aizawl\'s #1 Car Care Destination', 'color:#1E90FF;font-size:14px;font-weight:bold;');
