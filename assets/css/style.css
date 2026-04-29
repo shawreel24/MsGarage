@@ -1100,7 +1100,41 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* ============================================
-   INSTAGRAM SHOWCASE (new)
+   INSTAGRAM FOLLOW BUTTON
+   ============================================ */
+.ig-cta-wrap {
+  display: flex;
+  justify-content: center;
+  padding-top: 48px;
+}
+
+.ig-big-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(90deg, #f9ce34 0%, #ee2a7b 50%, #6228d7 100%);
+  color: #fff;
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  font-weight: 800;
+  padding: 16px 40px;
+  border-radius: 100px;
+  text-decoration: none;
+  box-shadow: 0 8px 32px rgba(238,42,123,0.4);
+  transition: transform .25s, box-shadow .25s;
+  letter-spacing: 0.3px;
+}
+.ig-big-cta:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 14px 48px rgba(238,42,123,0.55);
+}
+
+/* Footer Instagram link */
+.footer-instagram { display: inline-flex; align-items: center; gap: 8px; font-size: 0.88rem; font-family: var(--font-head); font-weight: 600; color: rgba(255,255,255,0.55); margin-top: 12px; transition: color 0.2s; }
+.footer-instagram:hover { color: #ee2a7b; }
+
+/* ============================================
+   FOOTER
    ============================================ */
 .ig-showcase { padding-top: 72px; }
 .ig-showcase-head { text-align: center; margin-bottom: 40px; }
