@@ -800,6 +800,95 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* ============================================
+   PRODUCTS PAGE
+   ============================================ */
+.products-hero {
+  min-height: calc(100svh - 72px);
+  padding-top: 148px;
+  background:
+    linear-gradient(135deg, rgba(0,0,0,0.92), rgba(17,17,17,0.9)),
+    url("../images/interior.png") center/cover;
+}
+
+.products-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1fr);
+  gap: 56px;
+  align-items: center;
+}
+
+.products-title {
+  font-family: var(--font-head);
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.products-subtitle {
+  max-width: 620px;
+  color: rgba(255,255,255,0.74);
+  font-size: 1.08rem;
+  line-height: 1.75;
+  margin-bottom: 32px;
+}
+
+.products-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.products-preview {
+  display: grid;
+  gap: 16px;
+}
+
+.product-placeholder-card {
+  background: rgba(30,30,30,0.84);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+}
+
+.product-placeholder-card:hover {
+  border-color: rgba(30,144,255,0.32);
+  transform: translateY(-4px);
+}
+
+.product-placeholder-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--blue-glow-sm);
+  border: 1px solid rgba(30,144,255,0.22);
+  color: var(--blue);
+  font-family: var(--font-head);
+  font-size: 0.8rem;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.product-placeholder-card h2 {
+  font-family: var(--font-head);
+  font-size: 1.08rem;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.product-placeholder-card p {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+/* ============================================
    REVIEWS SECTION
    ============================================ */
 .reviews-section { background: var(--black-900); }
@@ -1712,6 +1801,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .map-wrap       { height: 340px; }
   .gallery-grid   { grid-template-columns: repeat(2,1fr); }
   .gallery-item--large { grid-column: span 2; }
+  .products-hero-grid { grid-template-columns: 1fr; gap: 36px; }
 }
 
 /* ============================================
@@ -1867,5 +1957,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     font-size: 0.86rem;
     gap: 9px;
   }
+  .products-hero { padding-top: 112px; }
+  .products-cta-group .btn { width: 100%; justify-content: center; }
+  .product-placeholder-card { padding: 22px; }
 }
 

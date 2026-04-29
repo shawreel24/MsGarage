@@ -25,16 +25,16 @@
     const scrollY = window.scrollY;
 
     // Scrolled style
-    if (scrollY > 60) {
+    if (header && scrollY > 60) {
       header.classList.add('scrolled');
-    } else {
+    } else if (header) {
       header.classList.remove('scrolled');
     }
 
     // Back-to-top visibility
-    if (scrollY > 400) {
+    if (backToTop && scrollY > 400) {
       backToTop.classList.add('visible');
-    } else {
+    } else if (backToTop) {
       backToTop.classList.remove('visible');
     }
 
@@ -72,7 +72,7 @@
 
   // Close menu when clicking outside
   document.addEventListener('click', (e) => {
-    if (!header.contains(e.target) && navLinks.classList.contains('open')) {
+    if (header && navLinks && !header.contains(e.target) && navLinks.classList.contains('open')) {
       navLinks.classList.remove('open');
       hamburger.classList.remove('open');
       document.body.style.overflow = '';
@@ -139,7 +139,9 @@
     currentSlide = Math.max(0, Math.min(index, maxSlide));
 
     const offset = currentSlide * getCardWidth();
-    track.style.transform = `translateX(-${offset}px)`;
+    if (track) {
+      track.style.transform = `translateX(-${offset}px)`;
+    }
 
     // Update dots
     dots.forEach((dot, i) => {
@@ -218,8 +220,10 @@
     startAutoPlay();
   }
 
-  goToSlide(0);
-  startAutoPlay();
+  if (track && cards.length) {
+    goToSlide(0);
+    startAutoPlay();
+  }
 
   // Recalc on resize
   let resizeTimer;
@@ -388,10 +392,11 @@
      ============================================ */
   const galleryItems = document.querySelectorAll('.gallery-item');
 
-  // Create lightbox overlay
-  const lightbox = document.createElement('div');
-  lightbox.id = 'lightbox';
-  lightbox.innerHTML = `
+  if (galleryItems.length) {
+    // Create lightbox overlay
+    const lightbox = document.createElement('div');
+    lightbox.id = 'lightbox';
+    lightbox.innerHTML = `
     <div class="lb-backdrop"></div>
     <button class="lb-close" aria-label="Close lightbox">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -402,9 +407,9 @@
     </div>
   `;
 
-  // Inject lightbox styles
-  const lbStyle = document.createElement('style');
-  lbStyle.textContent = `
+    // Inject lightbox styles
+    const lbStyle = document.createElement('style');
+    lbStyle.textContent = `
     #lightbox {
       position: fixed; inset: 0; z-index: 9999;
       display: flex; align-items: center; justify-content: center;
@@ -450,36 +455,37 @@
     }
     .lb-close:hover { background: rgba(255,255,255,0.2); }
   `;
-  document.head.appendChild(lbStyle);
-  document.body.appendChild(lightbox);
+    document.head.appendChild(lbStyle);
+    document.body.appendChild(lightbox);
 
-  const lbImg     = lightbox.querySelector('.lb-img');
-  const lbCaption = lightbox.querySelector('.lb-caption');
-  const lbClose   = lightbox.querySelector('.lb-close');
-  const lbBg      = lightbox.querySelector('.lb-backdrop');
+    const lbImg     = lightbox.querySelector('.lb-img');
+    const lbCaption = lightbox.querySelector('.lb-caption');
+    const lbClose   = lightbox.querySelector('.lb-close');
+    const lbBg      = lightbox.querySelector('.lb-backdrop');
 
-  galleryItems.forEach(item => {
-    item.addEventListener('click', () => {
-      const img     = item.querySelector('img');
-      const caption = item.querySelector('.gallery-overlay span');
-      lbImg.src           = img.src;
-      lbImg.alt           = img.alt;
-      lbCaption.textContent = caption ? caption.textContent : '';
-      lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden';
+    galleryItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const img     = item.querySelector('img');
+        const caption = item.querySelector('.gallery-overlay span');
+        lbImg.src           = img.src;
+        lbImg.alt           = img.alt;
+        lbCaption.textContent = caption ? caption.textContent : '';
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
     });
-  });
 
-  function closeLightbox() {
-    lightbox.classList.remove('active');
-    document.body.style.overflow = '';
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    lbClose.addEventListener('click', closeLightbox);
+    lbBg.addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
   }
-
-  lbClose.addEventListener('click', closeLightbox);
-  lbBg.addEventListener('click', closeLightbox);
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeLightbox();
-  });
 
   /* ============================================
      11. HERO PARALLAX (subtle, desktop only — DISABLED on mobile to prevent scroll jitter)
