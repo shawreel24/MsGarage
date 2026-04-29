@@ -254,6 +254,12 @@
       el.style.transitionDelay = `${i * 80}ms`;
     });
 
+    // Product cards
+    document.querySelectorAll('.product-card').forEach((el, i) => {
+      el.classList.add('reveal');
+      el.style.transitionDelay = `${i * 80}ms`;
+    });
+
     // Why cards
     document.querySelectorAll('.why-card').forEach((el, i) => {
       el.classList.add('reveal');
