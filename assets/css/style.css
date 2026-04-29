@@ -1,5 +1,5 @@
-/* ============================================
-   MS GARAGE — Premium Stylesheet
+﻿/* ============================================
+   MS GARAGE â€” Premium Stylesheet
    ============================================ */
 
 /* ---- CSS VARIABLES ---- */
@@ -1100,40 +1100,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* ============================================
-   INSTAGRAM FOLLOW BUTTON
-   ============================================ */
-.ig-cta-wrap {
-  display: flex;
-  justify-content: center;
-  padding-top: 48px;
-}
-
-.ig-big-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  background: linear-gradient(90deg, #f9ce34 0%, #ee2a7b 50%, #6228d7 100%);
-  color: #fff;
-  font-family: var(--font-head);
-  font-size: 1.05rem;
-  font-weight: 800;
-  padding: 16px 40px;
-  border-radius: 100px;
-  text-decoration: none;
-  box-shadow: 0 8px 32px rgba(238,42,123,0.4);
-  transition: transform .25s, box-shadow .25s;
-  letter-spacing: 0.3px;
-}
-.ig-big-cta:hover {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 14px 48px rgba(238,42,123,0.55);
-}
-
-/* Footer Instagram link */
-.footer-instagram { display: inline-flex; align-items: center; gap: 8px; font-size: 0.88rem; font-family: var(--font-head); font-weight: 600; color: rgba(255,255,255,0.55); margin-top: 12px; transition: color 0.2s; }
-.footer-instagram:hover { color: #ee2a7b; }
-
-/* ============================================
    FOOTER
    ============================================ */
 .ig-showcase { padding-top: 72px; }
@@ -1698,7 +1664,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .reveal-right.visible { opacity: 1; transform: translateX(0); }
 
 /* ============================================
-   RESPONSIVE — TABLET
+   RESPONSIVE â€” TABLET
    ============================================ */
 @media (max-width: 1024px) {
   .services-grid  { grid-template-columns: repeat(2,1fr); }
@@ -1716,7 +1682,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* ============================================
-   RESPONSIVE — MOBILE
+   RESPONSIVE â€” MOBILE
    ============================================ */
 @media (max-width: 768px) {
   .section { padding: 60px 0; }
@@ -1842,11 +1808,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .service-card { padding: 24px 18px; }
   .service-icon-wrap { width: 50px; height: 50px; margin-bottom: 16px; }
 
-  /* Why — stack to 1 col */
+  /* Why â€” stack to 1 col */
   .why-grid { grid-template-columns: 1fr; gap: 12px; }
   .why-card { padding: 22px 18px; }
 
-  /* Gallery — 1 col */
+  /* Gallery â€” 1 col */
   .gallery-grid { grid-template-columns: 1fr; }
   .gallery-item--large { grid-column: span 1; aspect-ratio: 16/9; }
 
@@ -1858,3 +1824,4 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .site-footer { padding-top: 48px; }
   .footer-grid { gap: 24px; padding-bottom: 40px; }
 }
+
