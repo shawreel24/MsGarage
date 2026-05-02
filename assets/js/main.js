@@ -129,7 +129,8 @@
     if (!track || !cards.length) return 0;
     const card = cards[0];
     const style = getComputedStyle(track);
-    const gap = parseInt(style.gap) || 24;
+    const parsedGap = parseInt(style.gap);
+    const gap = isNaN(parsedGap) ? 24 : parsedGap;
     return card.offsetWidth + gap;
   }
 
