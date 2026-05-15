@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MS Garage Developer — Isak Roluahpuia, the developer behind the MS Garage website." />
+  <title>Developer | MS Garage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    /* ---- Developer Page Specific Styles ---- */
+    .dev-page {
+      min-height: 100vh;
+      background: var(--black-900);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Hero banner */
+    .dev-hero {
+      position: relative;
+      padding: 140px 0 80px;
+      overflow: hidden;
+      background: var(--black-900);
+    }
+
+    .dev-hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(229, 57, 53, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .dev-hero-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    /* Avatar */
+    .dev-avatar-wrap {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--red-dark), var(--red));
+      box-shadow: 0 0 0 6px rgba(229, 57, 53, 0.15), 0 0 60px rgba(229, 57, 53, 0.25);
+      margin: 0 auto 28px;
+      font-family: var(--font-head);
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -2px;
+      animation: fadeInDown 0.8s ease both;
+    }
+
+    .dev-name {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+      animation: fadeInUp 0.8s 0.1s ease both;
+    }
+
+    .dev-role-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--red-glow-sm);
+      border: 1px solid rgba(229, 57, 53, 0.3);
+      color: var(--red);
+      font-family: var(--font-head);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border-radius: 100px;
+      margin-bottom: 48px;
+      animation: fadeInUp 0.8s 0.2s ease both;
+    }
+
+    /* Info cards row */
+    .dev-cards-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.8s 0.3s ease both;
+    }
+
+    .dev-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 32px 36px;
+      min-width: 240px;
+      max-width: 300px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .dev-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--red), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .dev-card:hover {
+      border-color: rgba(229, 57, 53, 0.3);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-card), 0 0 40px rgba(229, 57, 53, 0.1);
+    }
+
+    .dev-card:hover::before {
+      opacity: 1;
+    }
+
+    .dev-card-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--red-glow-sm);
+      border: 1px solid rgba(229, 57, 53, 0.2);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .dev-card:hover .dev-card-icon {
+      background: var(--red-glow);
+      box-shadow: var(--shadow-red);
+    }
+
+    .dev-card-label {
+      font-family: var(--font-head);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+
+    .dev-card-value {
+      font-family: var(--font-head);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.4;
+    }
+
+    .dev-card-value a {
+      color: var(--white);
+      transition: color 0.2s;
+    }
+
+    .dev-card-value a:hover {
+      color: var(--red);
+    }
+
+    /* Divider section */
+    .dev-divider-section {
+      padding: 64px 0 80px;
+    }
+
+    .dev-built-banner {
+      background: var(--black-800);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-xl);
+      padding: 48px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dev-built-banner::after {
+      content: '</>';
+      position: absolute;
+      right: 32px;
+      bottom: -16px;
+      font-family: var(--font-head);
+      font-size: 8rem;
+      font-weight: 900;
+      color: rgba(229, 57, 53, 0.05);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .dev-built-banner h2 {
+      font-family: var(--font-head);
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .dev-built-banner p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 480px;
+      margin: 0 auto 28px;
+      line-height: 1.7;
+    }
+
+    .dev-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Floating particles */
+    .dev-particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(229, 57, 53, 0.08);
+      animation: floatParticle linear infinite;
+    }
+
+    @keyframes floatParticle {
+      0% { transform: translateY(100vh) scale(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-20vh) scale(1); opacity: 0; }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .dev-hero { padding: 120px 0 60px; }
+      .dev-cards-row { flex-direction: column; align-items: center; }
+      .dev-card { max-width: 100%; width: 100%; }
+      .dev-built-banner { padding: 36px 24px; }
+    }
+  </style>
+</head>
+
+<body class="dev-page">
+
+  <!-- Floating particles -->
+  <div class="dev-particles" aria-hidden="true" id="particles-container"></div>
+
+  <!-- ========== STICKY HEADER ========== -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner container">
+      <a href="index.html" class="logo" id="logo-link">
+        <img src="assets/images/logo.jpg" alt="MS Garage Logo" class="logo-img" style="height: 36px; width: auto; border-radius: 4px;" />
+      </a>
+      <nav class="nav-links" id="nav-links">
+        <a href="index.html#about" class="nav-link">About</a>
+        <a href="index.html#services" class="nav-link">Services</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="index.html#gallery" class="nav-link">Gallery</a>
+        <a href="index.html#reviews" class="nav-link">Reviews</a>
+        <a href="index.html#contact" class="nav-link">Contact</a>
+      </nav>
+      <a href="tel:08413835737" class="btn btn-primary header-cta" id="header-call-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path
+            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.85a16 16 0 0 0 6 6l1-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z" />
+        </svg>
+        Call Now
+      </a>
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========== DEV HERO ========== -->
+  <section class="dev-hero" id="dev-hero">
+    <div class="container dev-hero-inner">
+
+      <!-- Avatar initials -->
+      <div class="dev-avatar-wrap" id="dev-avatar">IR</div>
+
+      <!-- Name -->
+      <h1 class="dev-name" id="dev-name">Isak Roluahpuia</h1>
+
+      <!-- Role badge -->
+      <div class="dev-role-badge" id="dev-role">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="16 18 22 12 16 6" />
+          <polyline points="8 6 2 12 8 18" />
+        </svg>
+        Website Developer
+      </div>
+
+      <!-- Info cards -->
+      <div class="dev-cards-row" id="dev-cards">
+
+        <!-- Name card -->
+        <div class="dev-card" id="dev-card-name">
+          <div class="dev-card-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E53935" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+          </div>
+          <span class="dev-card-label">Developer</span>
+          <span class="dev-card-value">Isak Roluahpuia</span>
+        </div>
+
+        <!-- Phone card -->
+        <div class="dev-card" id="dev-card-phone">
+          <div class="dev-card-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E53935" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.85a16 16 0 0 0 6 6l1-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z" />
+            </svg>
+          </div>
+          <span class="dev-card-label">Phone</span>
+          <span class="dev-card-value">
+            <a href="tel:8119947383">8119947383</a>
+          </span>
+        </div>
+
+        <!-- Project card -->
+        <div class="dev-card" id="dev-card-project">
+          <div class="dev-card-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E53935" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          </div>
+          <span class="dev-card-label">Project</span>
+          <span class="dev-card-value">MS Garage Website</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BUILT WITH LOVE BANNER ========== -->
+  <section class="dev-divider-section">
+    <div class="container">
+      <div class="dev-built-banner" id="dev-built-banner">
+        <div class="section-tag" style="margin-bottom: 20px;">Made With ❤️</div>
+        <h2>Built for MS Garage, Aizawl</h2>
+        <p>This website was crafted with care to showcase the premium services of MS Garage — Aizawl's first choice automobile garage. Designed for performance, built for style.</p>
+        <a href="index.html" class="btn btn-primary dev-back-btn" id="dev-back-home-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+          Back to Home
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer" id="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand" id="footer-brand">
+        <a href="index.html" class="logo">
+          <img src="assets/images/logo.jpg" alt="MS Garage Logo" class="logo-img" style="height: 36px; width: auto; border-radius: 4px;" />
+        </a>
+        <p class="footer-tagline">First Choice Automobile Garage in Aizawl</p>
+        <p class="footer-rating">&#11088; 4.8 / 5 &middot; 13 Google Reviews</p>
+      </div>
+
+      <div class="footer-links" id="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html#about">About Us</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="index.html#gallery">Gallery</a></li>
+          <li><a href="index.html#reviews">Reviews</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-services" id="footer-services">
+        <h4>Our Services</h4>
+        <ul>
+          <li><a href="index.html#services">Paint Protection Film</a></li>
+          <li><a href="index.html#services">2K Painting</a></li>
+          <li><a href="index.html#services">Powder Coating</a></li>
+          <li><a href="index.html#services">Car Care Products</a></li>
+          <li><a href="index.html#services">Custom &amp; Modification</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact" id="footer-contact">
+        <h4>Contact Us</h4>
+        <p>Ramhlun North, Basic Mual,<br />Aizawl, Mizoram, India</p>
+        <a href="tel:08413835737" class="footer-phone">084138 35737</a>
+        <p class="footer-hours">Open Mon &ndash; Sat: 9:00 AM &ndash; 8:00 PM</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; 2025 MS Garage. All rights reserved. Aizawl, Mizoram.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== BACK TO TOP ========== -->
+  <button class="back-to-top" id="back-to-top-btn" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+      stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15" />
+    </svg>
+  </button>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Floating particles animation
+    (function () {
+      const container = document.getElementById('particles-container');
+      const count = 18;
+      for (let i = 0; i < count; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        const size = Math.random() * 80 + 20;
+        const left = Math.random() * 100;
+        const duration = Math.random() * 18 + 12;
+        const delay = Math.random() * 12;
+        p.style.cssText = `
+          width:${size}px;height:${size}px;
+          left:${left}%;bottom:0;
+          animation-duration:${duration}s;
+          animation-delay:${delay}s;
+        `;
+        container.appendChild(p);
+      }
+    })();
+  </script>
+</body>
+
+</html>
