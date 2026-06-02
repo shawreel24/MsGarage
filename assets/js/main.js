@@ -5,6 +5,16 @@
 (function () {
   'use strict';
 
+  /* ============================================
+     PRELOADER
+     ============================================ */
+  window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+      preloader.classList.add('hidden');
+    }
+  });
+
   /* ---- Cached Elements ---- */
   const header      = document.getElementById('site-header');
   const hamburger   = document.getElementById('hamburger-btn');
