@@ -266,6 +266,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    ============================================ */
 .hero-section {
   position: relative;
+  min-height: 100vh;
   min-height: 100svh;
   min-height: 100dvh;
   display: flex;
