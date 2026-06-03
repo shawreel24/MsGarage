@@ -504,6 +504,7 @@
     });
   }
 
+
   /* ============================================
      11. HERO PARALLAX (subtle, desktop only — DISABLED on mobile to prevent scroll jitter)
      ============================================ */
@@ -518,6 +519,48 @@
       }
     };
     window.addEventListener('scroll', parallaxHandler, { passive: true });
+  }
+
+  /* ============================================
+     12. MOBILE HERO BACKGROUND SWIPE
+     ============================================ */
+  const heroSection = document.getElementById('hero');
+  const videoGrid = document.querySelector('.hero-video-grid');
+  const bgDots = document.querySelectorAll('.bg-dot');
+
+  if (heroSection && videoGrid) {
+    let heroTouchStartX = 0;
+    let heroTouchEndX = 0;
+    let currentHeroIndex = 1; // Start on middle video (index 1)
+
+    heroSection.addEventListener('touchstart', e => {
+      heroTouchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    heroSection.addEventListener('touchend', e => {
+      if (window.innerWidth > 768) return; // Only mobile
+
+      heroTouchEndX = e.changedTouches[0].screenX;
+      const swipeDistance = heroTouchStartX - heroTouchEndX;
+
+      // Minimum swipe distance of 50px to trigger transition
+      if (Math.abs(swipeDistance) > 50) {
+        if (swipeDistance > 0) {
+          if (currentHeroIndex < 2) currentHeroIndex++;
+        } else {
+          if (currentHeroIndex > 0) currentHeroIndex--;
+        }
+        
+        // Translate grid
+        const offset = -currentHeroIndex * 33.3333;
+        videoGrid.style.transform = `translateX(${offset}%)`;
+
+        // Update dots active class
+        bgDots.forEach((dot, idx) => {
+          dot.classList.toggle('active', idx === currentHeroIndex);
+        });
+      }
+    }, { passive: true });
   }
 
   console.log('%c🚗 MS Garage — Aizawl\'s #1 Car Care Destination', 'color:#1E90FF;font-size:14px;font-weight:bold;');

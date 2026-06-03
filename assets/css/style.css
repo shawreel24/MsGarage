@@ -302,6 +302,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-video-item {
@@ -315,11 +316,44 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* Mobile responsive fallback */
 @media (max-width: 768px) {
   .hero-video-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    grid-template-columns: none;
+    width: 300%;
+    transform: translateX(-33.3333%);
   }
-  .hero-video-item:nth-child(1),
-  .hero-video-item:nth-child(3) {
-    display: none;
+  .hero-video-item {
+    width: 33.3333%;
+    flex-shrink: 0;
+  }
+}
+
+/* Background video dots indicator for mobile */
+.hero-bg-dots {
+  display: none;
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  gap: 8px;
+}
+
+.bg-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  transition: background 0.3s, transform 0.3s;
+}
+
+.bg-dot.active {
+  background: var(--red);
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .hero-bg-dots {
+    display: flex;
   }
 }
 
