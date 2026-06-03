@@ -419,7 +419,8 @@
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
     <div class="lb-content">
-      <img class="lb-img" src="" alt="" />
+      <img class="lb-img" src="" alt="" style="display: none;" />
+      <video class="lb-video" src="" controls autoplay style="display: none;"></video>
       <p class="lb-caption"></p>
     </div>
   `;
@@ -451,15 +452,19 @@
       box-shadow: 0 20px 60px rgba(0,0,0,0.6);
       animation: lbIn 0.35s cubic-bezier(0.4,0,0.2,1) both;
     }
+    .lb-video {
+      max-width: 90vw; max-height: 78vh;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      animation: lbIn 0.35s cubic-bezier(0.4,0,0.2,1) both;
+      outline: none;
+    }
     @keyframes lbIn {
       from { transform: scale(0.9); opacity: 0; }
       to   { transform: scale(1);   opacity: 1; }
     }
     .lb-caption {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.9rem; font-weight: 600;
-      color: rgba(255,255,255,0.75);
-      letter-spacing: 0.5px;
+      display: none !important;
     }
     .lb-close {
       position: absolute; top: 20px; right: 20px; z-index: 2;
@@ -476,6 +481,7 @@
     document.body.appendChild(lightbox);
 
     const lbImg     = lightbox.querySelector('.lb-img');
+    const lbVideo   = lightbox.querySelector('.lb-video');
     const lbCaption = lightbox.querySelector('.lb-caption');
     const lbClose   = lightbox.querySelector('.lb-close');
     const lbBg      = lightbox.querySelector('.lb-backdrop');
@@ -483,9 +489,24 @@
     galleryItems.forEach(item => {
       item.addEventListener('click', () => {
         const img     = item.querySelector('img');
+        const video   = item.querySelector('video');
         const caption = item.querySelector('.gallery-overlay span');
-        lbImg.src           = img.src;
-        lbImg.alt           = img.alt;
+        
+        if (img) {
+          lbImg.src           = img.src;
+          lbImg.alt           = img.alt;
+          lbImg.style.display = 'block';
+          lbVideo.style.display = 'none';
+          lbVideo.src           = '';
+        } else if (video) {
+          // Remove the #t=0.5 seek parameter if present
+          const fullVideoSrc = video.src.split('#')[0];
+          lbVideo.src           = fullVideoSrc;
+          lbVideo.style.display = 'block';
+          lbImg.style.display   = 'none';
+          lbImg.src             = '';
+        }
+        
         lbCaption.textContent = caption ? caption.textContent : '';
         lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -494,6 +515,9 @@
 
     function closeLightbox() {
       lightbox.classList.remove('active');
+      lbVideo.pause();
+      lbVideo.src = '';
+      lbImg.src = '';
       document.body.style.overflow = '';
     }
 
@@ -501,6 +525,36 @@
     lbBg.addEventListener('click', closeLightbox);
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') closeLightbox();
+    });
+  }
+
+  /* ============================================
+     10A. GALLERY FILTER TABS
+     ============================================ */
+  const filterTabs = document.querySelectorAll('.filter-tab');
+  const subpageGridItems = document.querySelectorAll('.subpage-gallery-grid .gallery-item');
+
+  if (filterTabs.length && subpageGridItems.length) {
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const filterValue = tab.dataset.filter;
+
+        subpageGridItems.forEach(item => {
+          const itemType = item.dataset.type;
+          
+          if (filterValue === 'all' || itemType === filterValue) {
+            item.style.display = 'block';
+            setTimeout(() => {
+              item.classList.add('visible');
+            }, 10);
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
     });
   }
 
