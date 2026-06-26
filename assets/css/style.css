@@ -800,10 +800,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 3px;
   background: linear-gradient(90deg, var(--red), transparent);
   opacity: 0;
   transition: opacity 0.3s;
+  z-index: 2;
 }
 
 .product-card:hover {
@@ -904,18 +905,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: block;
 }
 
-/* Only add pseudo ::after on icon-only cards (no image wrap child) */
-.product-card:not(:has(.product-card-img-wrap))::after {
-  content: 'View products';
-  margin-top: auto;
-  font-family: var(--font-head);
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: var(--white);
-  opacity: 0.72;
-}
+
 
 /* ============================================
    WHY CHOOSE US
