@@ -2214,6 +2214,200 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* ============================================
+   PRODUCTS PAGE (prod-page-*)
+   ============================================ */
+
+/* Hero */
+.prod-page-hero {
+  padding: 60px 0 80px;
+  background: linear-gradient(160deg, var(--black-900) 60%, rgba(229,57,53,0.05) 100%);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.prod-page-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.prod-page-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.prod-page-title {
+  font-family: var(--font-head);
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  color: var(--white);
+}
+
+.prod-page-subtitle {
+  font-size: 1.02rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  max-width: 440px;
+}
+
+.prod-page-lineup-wrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.06);
+}
+
+.prod-page-lineup-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+
+.prod-page-lineup-wrap:hover .prod-page-lineup-img {
+  transform: scale(1.03);
+}
+
+/* Cards Section */
+.prod-cards-section {
+  padding: 96px 0;
+  background: var(--section-bg);
+}
+
+.prod-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* Individual Card */
+.prod-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+  position: relative;
+}
+
+.prod-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--red), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.prod-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(229,57,53,0.3);
+  box-shadow: var(--shadow-card), 0 16px 48px rgba(229,57,53,0.12);
+}
+
+.prod-card:hover::before {
+  opacity: 1;
+}
+
+/* Card image */
+.prod-card-img-wrap {
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: #111;
+}
+
+.prod-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+
+.prod-card:hover .prod-card-img {
+  transform: scale(1.08);
+}
+
+/* Card body */
+.prod-card-body {
+  padding: 24px 22px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.prod-card-category {
+  font-family: var(--font-head);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--red);
+  background: var(--red-glow-sm);
+  border: 1px solid rgba(229,57,53,0.2);
+  padding: 3px 10px;
+  border-radius: 100px;
+  align-self: flex-start;
+  margin-bottom: 4px;
+}
+
+.prod-card-name {
+  font-family: var(--font-head);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.2;
+}
+
+.prod-card-type {
+  font-family: var(--font-head);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.prod-card-desc {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .prod-cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .prod-page-hero-inner { gap: 40px; }
+}
+
+@media (max-width: 768px) {
+  .prod-page-hero { padding: 40px 0 60px; }
+  .prod-page-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .prod-page-lineup-wrap { order: -1; }
+  .prod-page-title { font-size: clamp(2rem, 8vw, 3rem); }
+  .prod-cards-section { padding: 60px 0; }
+  .prod-cards-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
+
+@media (max-width: 480px) {
+  .prod-cards-grid { grid-template-columns: 1fr; gap: 16px; }
+  .prod-card-body { padding: 20px 18px 24px; }
+}
+
+/* ============================================
    GALLERY PAGE SPECIFIC STYLES
    ============================================ */
 .gallery-hero-section {

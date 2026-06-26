@@ -52,47 +52,129 @@
     </div>
   </header>
 
-  <main>
-    <section class="products-hero section">
-      <div class="container products-hero-grid">
-        <div class="products-copy">
-          <div class="section-tag">Products</div>
-          <h1 class="products-title">Detailing Products</h1>
-          <p class="products-subtitle">
-            Browse garage-approved car care products for washing, polishing, protection, and interior upkeep.
-            Call us to check current availability before visiting.
-          </p>
-          <div class="products-cta-group">
-            <a href="tel:08413835737" class="btn btn-primary">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path
-                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.85a16 16 0 0 0 6 6l1-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z" />
-              </svg>
+  <main style="padding-top: 72px;">
+
+    <!-- ========== PRODUCTS HERO ========== -->
+    <section class="prod-page-hero">
+      <div class="container">
+        <div class="prod-page-hero-inner">
+          <div class="prod-page-copy">
+            <div class="section-tag">Our Products</div>
+            <h1 class="prod-page-title">MS Garage<br><span class="accent-text">Detailing Line</span></h1>
+            <p class="prod-page-subtitle">
+              Premium garage-formulated car care products — made for enthusiasts, trusted by professionals.
+              Visit us or call to check availability.
+            </p>
+            <a href="tel:08413835737" class="btn btn-primary" id="products-call-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.85a16 16 0 0 0 6 6l1-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
               Call for Availability
             </a>
-            <a href="index.html#services" class="btn btn-outline">View Services</a>
           </div>
-        </div>
-        <div class="products-preview" aria-label="Product categories">
-          <div class="product-placeholder-card">
-            <span class="product-placeholder-icon">01</span>
-            <h2>Wash &amp; Prep</h2>
-            <p>Shampoos, microfiber towels, applicators, and prep essentials.</p>
-          </div>
-          <div class="product-placeholder-card">
-            <span class="product-placeholder-icon">02</span>
-            <h2>Polish &amp; Protect</h2>
-            <p>Polishes, waxes, sealants, coatings, and finishing products.</p>
-          </div>
-          <div class="product-placeholder-card">
-            <span class="product-placeholder-icon">03</span>
-            <h2>Interior Care</h2>
-            <p>Cleaners, dressings, leather care, brushes, and cabin supplies.</p>
+          <div class="prod-page-lineup-wrap">
+            <img
+              src="assets/images/Product/A0106577.JPG"
+              alt="MS Garage Full Detailing Product Lineup"
+              class="prod-page-lineup-img"
+              loading="eager"
+            />
           </div>
         </div>
       </div>
     </section>
+
+    <!-- ========== PRODUCT CARDS GRID ========== -->
+    <section class="prod-cards-section">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <div class="section-tag">The Collection</div>
+          <h2 class="section-title">6 Products. 1 Mission.</h2>
+          <p class="section-subtitle">Each formula engineered for a specific job — so your car always gets the right treatment.</p>
+        </div>
+
+        <div class="prod-cards-grid">
+
+          <!-- EcoRinse -->
+          <div class="prod-card reveal" id="prod-ecorinse">
+            <div class="prod-card-img-wrap">
+              <img src="assets/images/Product/A0106556.JPG" alt="EcoRinse Waterless Wash" class="prod-card-img" loading="lazy" />
+            </div>
+            <div class="prod-card-body">
+              <span class="prod-card-category">Wash &amp; Prep</span>
+              <h3 class="prod-card-name">EcoRinse</h3>
+              <p class="prod-card-type">Waterless Wash</p>
+              <p class="prod-card-desc">Clean your car without a single drop of water. Lifts dust and light grime safely using advanced lubricating agents that protect the paint surface.</p>
+            </div>
+          </div>
+
+          <!-- De-Tar -->
+          <div class="prod-card reveal" id="prod-detar">
+            <div class="prod-card-img-wrap">
+              <img src="assets/images/Product/A0106572.JPG" alt="De-Tar Adhesive Remover" class="prod-card-img" loading="lazy" />
+            </div>
+            <div class="prod-card-body">
+              <span class="prod-card-category">Surface Prep</span>
+              <h3 class="prod-card-name">De-Tar</h3>
+              <p class="prod-card-type">Adhesive Remover</p>
+              <p class="prod-card-desc">Dissolves stubborn tar spots, adhesive residue, and road grime without damaging the paint or protective coatings underneath.</p>
+            </div>
+          </div>
+
+          <!-- Elite Cleaner 2.0 -->
+          <div class="prod-card reveal" id="prod-elitecleaner">
+            <div class="prod-card-img-wrap">
+              <img src="assets/images/Product/A0106561.JPG" alt="Elite Cleaner 2.0 Oil Degreaser" class="prod-card-img" loading="lazy" />
+            </div>
+            <div class="prod-card-body">
+              <span class="prod-card-category">Degreaser</span>
+              <h3 class="prod-card-name">Elite Cleaner 2.0</h3>
+              <p class="prod-card-type">Oil Cleaner / Degreaser</p>
+              <p class="prod-card-desc">Heavy-duty formula that cuts through grease, engine oil, and brake dust on wheels, engine bays, and underbody panels.</p>
+            </div>
+          </div>
+
+          <!-- GlassPop -->
+          <div class="prod-card reveal" id="prod-glasspop">
+            <div class="prod-card-img-wrap">
+              <img src="assets/images/Product/A0106559.JPG" alt="GlassPop Glass Cleaner" class="prod-card-img" loading="lazy" />
+            </div>
+            <div class="prod-card-body">
+              <span class="prod-card-category">Glass Care</span>
+              <h3 class="prod-card-name">GlassPop</h3>
+              <p class="prod-card-type">Glass Cleaner</p>
+              <p class="prod-card-desc">Streak-free clarity on every window and mirror. Removes fingerprints, film, and water spots for crystal-clear visibility.</p>
+            </div>
+          </div>
+
+          <!-- Tyre Shine -->
+          <div class="prod-card reveal" id="prod-tyreshine">
+            <div class="prod-card-img-wrap">
+              <img src="assets/images/Product/A0106566.JPG" alt="Tyre Shine Rubber Sealant" class="prod-card-img" loading="lazy" />
+            </div>
+            <div class="prod-card-body">
+              <span class="prod-card-category">Tyre Care</span>
+              <h3 class="prod-card-name">Tyre Shine</h3>
+              <p class="prod-card-type">Rubber Sealant</p>
+              <p class="prod-card-desc">Restores deep black finish on tyres while sealing the rubber against UV fade, cracking, and browning. Long-lasting wet-look shine.</p>
+            </div>
+          </div>
+
+          <!-- Phantom -->
+          <div class="prod-card reveal" id="prod-phantom">
+            <div class="prod-card-img-wrap">
+              <img src="assets/images/Product/A0106573.JPG" alt="Phantom Matte Paint Polish" class="prod-card-img" loading="lazy" />
+            </div>
+            <div class="prod-card-body">
+              <span class="prod-card-category">Paint Care</span>
+              <h3 class="prod-card-name">Phantom</h3>
+              <p class="prod-card-type">Matte Paint Polish</p>
+              <p class="prod-card-desc">Specially formulated for matte and satin finishes. Cleans, conditions and refreshes flat paint without adding gloss or disturbing the matte texture.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer" id="site-footer">
