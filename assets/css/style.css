@@ -2375,17 +2375,33 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   }
   .subpage-gallery-grid {
     column-count: 2 !important;
-    column-gap: 16px !important;
+    column-gap: 10px !important;
+  }
+  .subpage-gallery-grid .gallery-item {
+    margin-bottom: 10px;
+    border-radius: var(--radius-sm);
   }
   .video-play-badge {
-    width: 48px;
-    height: 48px;
+    width: 42px;
+    height: 42px;
   }
 }
 
 @media (max-width: 480px) {
   .subpage-gallery-grid {
-    column-count: 1 !important;
-    column-gap: 16px !important;
+    column-count: 2 !important;
+    column-gap: 8px !important;
+  }
+  .subpage-gallery-grid .gallery-item {
+    margin-bottom: 8px;
+    border-radius: var(--radius-sm);
+  }
+  .video-play-badge {
+    width: 36px;
+    height: 36px;
+  }
+  .video-play-badge svg {
+    width: 16px;
+    height: 16px;
   }
 }
